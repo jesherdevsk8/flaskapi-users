@@ -1,0 +1,24 @@
+version: '3.0'
+
+services:
+  aplicacao:
+    image: jesherpinkman/flaskapi
+    environment:
+      - 'DB_HOST=banco'
+      - 'DB_USER=pinkman'
+      - 'DB_PASS=4linux'
+      - 'DB_NAME=fakerdb'
+    ports:
+      - '5000:5000'
+  banco:
+    image: mariadb
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=Abc123_'
+      - 'MYSQL_USER=pinkman'
+      - 'MYSQL_PASSWORD=4linux'
+      - 'MYSQL_DATABASE=fakerdb'
+    volumes:
+      - 'data:/var/lib/mysql'
+
+volumes:
+  data: {}
